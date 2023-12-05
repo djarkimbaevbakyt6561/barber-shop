@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class User {
@@ -7,7 +8,17 @@ public class User {
     private String password;
     private String phoneNumber;
     private String gender;
+    private BigDecimal balance = new BigDecimal(0);
     private Roles role;
+
+    public BigDecimal getBalance() {
+        return balance;
+    }
+
+    public void addBalance(int money) {
+        balance = balance.add(BigDecimal.valueOf(money));
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -154,5 +165,14 @@ public class User {
     }
 
     public User() {
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName +
+                ", email: " + email +
+                ", номер телефона: " + phoneNumber +
+                ", пол: " + gender + '\''
+                ;
     }
 }
